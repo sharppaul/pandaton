@@ -14,7 +14,7 @@ if __name__ == "__main__":
     docks = []
     ships = []
     for i in range(2):
-        docks.append(Dock('Simple dock {}'.format(i), 250))
+        docks.append(Dock('Simple dock {}'.format(i)))
 
     for shipstr in ships_string.split('\n'):
         shiparr = shipstr.split(',')

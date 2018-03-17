@@ -81,9 +81,8 @@ class Ship:
 
 
 class Dock:
-    def __init__(self, dock_name, depth):
+    def __init__(self, dock_name):
         self.dock_name = dock_name
-        self.depth = depth
         self.state = Status.Free
         self.processed_containers = 0
         self.docked_ship = None
@@ -112,7 +111,7 @@ class Dock:
             print('Dock has no ship!  {}'.format(self.dock_name))
 
     def __str__(self):
-        return "Dock {} status: {}, depth: {}, processed containers: {}".format(self.dock_name, self.state, self.depth, self.processed_containers)
+        return "Dock {} status: {}, processed containers: {}".format(self.dock_name, self.state, self.processed_containers)
 
 
 class Port:
@@ -170,10 +169,7 @@ class Port:
             if self.check_water(ship):
                 for _dock in self.docks:
                     if _dock.state == Status.Free:
-                        if _dock.depth >= ship.get_depth():
-                            return True, _dock
-                        else:
-                            return False, 'Ship too deep'
+                        return True, _dock
                     elif _dock.state == Status.Departing:
                         soon_available.append(_dock)
 
